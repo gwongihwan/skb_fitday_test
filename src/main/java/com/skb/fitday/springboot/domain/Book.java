@@ -3,15 +3,12 @@ package com.skb.fitday.springboot.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import javax.persistence.Entity;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Book extends AbstractPersistable<Long> {
+//@Entity
+public class Book {
 
     private String name;
     private String isbn13;
