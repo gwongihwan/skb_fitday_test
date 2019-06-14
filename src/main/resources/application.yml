@@ -1,0 +1,6 @@
+# application-api.yml, application-datasource.yml 을 include해서 사용하겠다는 설정
+#spring:
+#  profiles:
+#    include:
+#      - api
+#      - datasource
