@@ -2,13 +2,13 @@
 <configuration>
     <property name="LOGS_ABSOLUTE_PATH" value="./logs" />
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS_ABSOLUTE_PATH}/logback.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
@@ -43,17 +43,28 @@
     </appender>
 
     <!--
-    <logger name="com.apress.spring" level="DEBUG">
+    <logger name="org.springframework" level="DEBUG">
         <appender-ref ref="SAMPLE" />
     </logger>
 
-    <logger name="com.apress.spring.jeongpro" level="INFO">
+    <logger name="org.hibernate" level="INFO">
         <appender-ref ref="ROLLING" />
     </logger>
     -->
-    <root level="DEBUG">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="ROLLING" />
-        <appender-ref ref="ERROR" />
-    </root>
+
+    <!-- 로컬 환경인 경우 로그는 CONSOLE 에만 찍는다. -->
+    <springProfile name="local">
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+    <!-- 로컬 이외의 환경의 경우 CONSOLE, LOG, ERROR 로그를 모두 찍는다. -->
+    <springProfile name="!local">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="LOG" />
+            <appender-ref ref="ERROR" />
+        </root>
+    </springProfile>
+
 </configuration>

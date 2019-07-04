@@ -6,9 +6,21 @@ server:
 logging:
   config: classpath:logback-spring.xml
 
+
 # application-api.yml, application-datasource.yml 을 include해서 사용하겠다는 설정
 #spring:
 #  profiles:
 #    include:
 #      - api
 #      - datasource
+
+# Key-Value Store(Couchbase) 설정
+spring:
+  couchbase:
+    bootstrap-hosts: 211.104.171.162:8091
+    bucket:
+      name: admin
+      password: passwd
+  data:
+    couchbase:
+      auto-index: true
