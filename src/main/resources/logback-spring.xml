@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOGS_ABSOLUTE_PATH" value="./logs" />
+    <property name="LOGS_ABSOLUTE_PATH" value="/skb/logs/fitday" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -58,8 +58,16 @@
             <appender-ref ref="CONSOLE" />
         </root>
     </springProfile>
-    <!-- 로컬 이외의 환경의 경우 CONSOLE, LOG, ERROR 로그를 모두 찍는다. -->
-    <springProfile name="!local">
+    <!-- 개발 환경의 경우 LOG, ERROR 로그를 모두 찍는다. 디버그 레벨은 DEBUG -->
+    <springProfile name="dev">
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="LOG" />
+            <appender-ref ref="ERROR" />
+        </root>
+    </springProfile>
+    <!-- 상용 환경의 경우 LOG, ERROR 로그를 모두 찍는다. 디버그 레벨은 INFO -->
+    <springProfile name="prd">
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
             <appender-ref ref="LOG" />

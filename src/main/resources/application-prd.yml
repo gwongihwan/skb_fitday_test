@@ -1,6 +1,10 @@
+spring:
+  application:
+    name: fitdayApp
+
 # 서버 포트 설정
 server:
-  port: 8080
+  port: 39999
 
 # Logging(logback) 설정 파일 위치 지정
 logging:
@@ -15,12 +19,12 @@ logging:
 #      - datasource
 
 # Key-Value Store(Couchbase) 설정
-spring:
-  couchbase:
-    bootstrap-hosts: 211.104.171.162:8091
-    bucket:
-      name: admin
-      password: passwd
-  data:
-    couchbase:
-      auto-index: true
+#spring:
+#  couchbase:
+#    bootstrap-hosts: 211.104.171.162:8091
+#    bucket:
+#      name: admin
+#      password: passwd
+#  data:
+#    couchbase:
+#      auto-index: true
