@@ -1,4 +1,4 @@
-package com.skb.fitday.springboot.domain;
+package com.skb.fitday.springboot.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

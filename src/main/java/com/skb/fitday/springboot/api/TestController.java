@@ -1,12 +1,8 @@
 package com.skb.fitday.springboot.api;
 
-import com.skb.fitday.springboot.domain.ApiRequestMessage;
-import com.skb.fitday.springboot.domain.ApiResponseMessage;
-import com.skb.fitday.springboot.domain.ReqVo;
-import com.skb.fitday.springboot.domain.TestVo;
+import com.skb.fitday.springboot.model.ApiRequestMessage;
+import com.skb.fitday.springboot.model.ApiResponseMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -43,9 +39,15 @@ public class TestController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PostMapping("/**")
+    public ResponseEntity<ApiResponseMessage> allRequest() {
+        log.debug("all request");
+        return new ResponseEntity<ApiResponseMessage>(new ApiResponseMessage(), HttpStatus.OK);
+    }
+
     @PostMapping("/res.test")
     public ResponseEntity<ApiResponseMessage> nuguTest(@RequestBody @Valid ApiRequestMessage reqMsg) {
-//    public ResponseEntity<ApiResponseMessage> nuguTest(@RequestBody @Valid ReqVo reqMsg) {
+//    public ResponseEntity<ApiResponseMessage> nuguTest(@RequestBodyVo @Valid ReqVo reqMsg) {
 
         String[] profiles = environment.getActiveProfiles();
         for (String profile : profiles) {

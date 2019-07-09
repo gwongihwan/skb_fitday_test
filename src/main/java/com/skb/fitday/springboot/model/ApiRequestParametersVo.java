@@ -1,18 +1,18 @@
-package com.skb.fitday.springboot.domain;
+package com.skb.fitday.springboot.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class ApiRequestKey1Vo {
+public class ApiRequestParametersVo {
 
-    private String type;
-
-    private String value;
+    private Map<String, String> request_value;
 
 }

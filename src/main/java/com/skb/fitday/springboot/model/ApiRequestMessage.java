@@ -1,19 +1,21 @@
-package com.skb.fitday.springboot.domain;
+package com.skb.fitday.springboot.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Map;
-
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class ReqVo {
+public class ApiRequestMessage {
 
     private String version;
-    private Map<Object, Object> action;
+
+    private ApiRequestActionVo action;
+
+//    @NotEmpty
+//    private Map<String, String> context;
 
 }
