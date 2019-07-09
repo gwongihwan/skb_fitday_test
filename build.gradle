@@ -1,3 +1,17 @@
+buildscript{
+	repositories{
+		mavenCentral()		
+	}
+	dependencies{
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
+		classpath("org.hidetake:gradle-ssh-plugin:2.2.0")
+	}
+}
+jar{
+	baseName = 'skb-fitday'
+	version = '0.0.1-SNAPSHOT'
+}
+
 plugins {
     id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'java'
@@ -27,7 +41,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.data:spring-data-couchbase'
     compile 'ch.qos.logback:logback-classic:1.2.3'
-    compileOnly 'org.projectlombok:lombok'
+    compile 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
