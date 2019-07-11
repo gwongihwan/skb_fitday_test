@@ -1,11 +1,11 @@
 package com.skb.fitday.springboot.api;
 
-import com.skb.fitday.springboot.model.ApiResponseMessage;
 import com.skb.fitday.springboot.model.request.RequestBodyVo;
 import com.skb.fitday.springboot.model.response.ResponseBodyVo;
 import com.skb.fitday.springboot.model.response.ResponseDataVo;
 import com.skb.fitday.springboot.model.response.ResponseDirectivesVo;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -38,10 +38,19 @@ public class NuguController {
 
         this.getLogRequestObject(reqVo);
 
-        return new ResponseEntity<ResponseBodyVo>(this.getResponseObject(reqVo), HttpStatus.OK);
+        return new ResponseEntity<>(this.getResponseObject(reqVo), HttpStatus.OK);
     }
 
-    @NotNull
+    @PostMapping("/select_menu")
+    public ResponseEntity<?> test(@RequestBody String req) {
+        JSONObject json = new JSONObject(req);
+
+        log.debug(json.toString());
+
+        return new ResponseEntity<>(new String(), HttpStatus.OK);
+    }
+
+    @NotEmpty
     private void getLogRequestObject(RequestBodyVo reqVo) {
         log.debug("version : " + reqVo.getVersion());
 
