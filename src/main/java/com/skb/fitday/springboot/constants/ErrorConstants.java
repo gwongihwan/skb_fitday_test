@@ -6,7 +6,7 @@ public enum ErrorConstants {
 
     private final String code;
 
-    private ErrorConstants(String code) {
+    ErrorConstants(String code) {
         this.code = code;
     }
 
